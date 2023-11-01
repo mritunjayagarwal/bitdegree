@@ -1,10 +1,12 @@
 import './App.css';
 import axios from "axios";
 import { useEffect, useState } from "react";
+import LearnImg from './img/learn-earn.svg';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import Navbar from './components/Navbar';
+import Logo from './img/logo.svg'
 
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
@@ -13,11 +15,12 @@ function App() {
 
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
+  const [top, setTop] = useState(false);
 
   const getData = async () => {
     try {
       const res = await axios.get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=40&page=1&sparkline=false"
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=40&page=1&sparkline=false`
       );
       setCoins(res.data);
       console.log(res.data);
@@ -25,6 +28,10 @@ function App() {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   const options = {
     loop: false,
@@ -104,10 +111,6 @@ function App() {
   const truncate = function (str) {
     return str.length > 10 ? str.substring(0, 25) + "..." : str;
   }
-
-  useEffect(() => {
-    getData();
-  }, []);
 
   return (
     <main className="App">
@@ -321,7 +324,14 @@ function App() {
               </div>
             </div>
           </div>
-          <table className="table" style={{ "position": "relative" }}>
+          <div class = "d-flex">
+            <div>
+                {/* <button class = "filter-btn">All Assets</button> */}
+                {/* <button class = "filter-btn" onClick = {() => setTop(true)}>Gainers</button>
+                <button class = "filter-btn" onClick = {() => setTop(false)}>Losers</button> */}
+            </div>
+          </div>
+          <table className="table table-hover" style={{ "position": "relative" }}>
             <thead className='sticky-top text-white' style = {{"background": "#2b004a"}}>
               <tr>
                 <th scope="col">#</th>
@@ -335,17 +345,17 @@ function App() {
             </thead>
             <tbody class="text-white" style = {{fontWeight: 700}}>
               {coins.map((coin, index) => {
-                let { id, name, image, current_price, price_change_percentage_24h, market_cap_change_24h, total_volume, circulating_supply } = coin;
+                let { id, name, image, current_price, price_change_percentage_24h, market_cap, total_volume, circulating_supply } = coin;
                 image = image.split('?')[0];
                 return (
                   <tr>
-                    <th scope="row">{index + 1}</th>
-                    <td><img src={image} style={{ "width": "30px", "margin-right": "5px" }} /> {name}</td>
-                    <td>${current_price}</td>
-                    {price_change_percentage_24h > 0 ? <td style = {{"color": "#19c283", "font-weight": 800}}>{"+" + price_change_percentage_24h.toFixed(2)}</td>: <td style = {{"color": "#ff3d64", "font-weight": 800}}>{price_change_percentage_24h.toFixed(2)}</td>}
-                    <td>{market_cap_change_24h}</td>
-                    <td>{total_volume}</td>
-                    <td>{circulating_supply}</td>
+                    <th scope="row" class = "py-4">{index + 1}</th>
+                    <td class = "py-4"><img src={image} style={{ "width": "30px", "margin-right": "5px" }} /> {name}</td>
+                    <td class = "py-4">${current_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+                    {price_change_percentage_24h > 0 ? <td class = "py-4" style = {{"color": "#19c283", "font-weight": 800}}>{"+" + price_change_percentage_24h.toFixed(2)}</td>: <td class = "py-4" style = {{"color": "#ff3d64", "font-weight": 800}}>{price_change_percentage_24h.toFixed(2)}</td>}
+                    <td class = "py-4">{market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+                    <td class = "py-4">{total_volume.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+                    <td class = "py-4">{circulating_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
                   </tr>
                 )
               })}
@@ -353,38 +363,41 @@ function App() {
           </table>
         </div>
       </section>
-      <section>
-        <div class="container text-center">
-          <h1>#1 Crypto Educator</h1>
-          <p>Build crypto skills with courses, data, certificates, and degrees from leading blockchain companies</p>
-          <button>Enter the Learnoverse</button>
+      <section style = {{background: "purple", "margin-top": "-20px", "padding": "200px 0"}}>
+        <div class="container text-center text-white">
+          <h1 class = "achieve-head">#1 Crypto Educator</h1>
+          <p class = "achieve-para mt-4">Build crypto skills with courses, data, certificates, and degrees from leading blockchain companies</p>
+          <button class = "achieve-btn mt-4">Enter the Learnoverse</button>
         </div>
       </section>
-      <section>
+      <section style = {{"background": "#0d0d0d"}}>
         <div class="container">
           <div class="row">
             <div class="col-lg-6">
-              <h1>We are educating millions of cryptocurrency learners with 21,000+ crypto courses, blockchain projects, coins, and tokens</h1>
-              <p>As the leading gamified learning crypto education platform in the world, we focus on providing you with tracking information and in-depth data on the largest number of different digital assets, cryptocurrency prices, and other metrics. With the help of our Cryptocurrency Tracker, you can learn and earn crypto by tracking and analyzing the data of over 21,000+ different crypto projects, as well as the coins & tokens behind them.</p>
-              <div class="row">
+              <h1 class = "text-white">We are educating millions of cryptocurrency learners with 21,000+ crypto courses, blockchain projects, coins, and tokens</h1>
+              <p style = {{"color": "#9f9e9e", fontSize: "25px", fontWeight: 300}}>As the leading gamified learning crypto education platform in the world, we focus on providing you with tracking information and in-depth data on the largest number of different digital assets, cryptocurrency prices, and other metrics. With the help of our Cryptocurrency Tracker, you can learn and earn crypto by tracking and analyzing the data of over 21,000+ different crypto projects, as well as the coins & tokens behind them.</p>
+              <div class="row text-white">
                 <div class="col-lg-4">
                   <h1>21,000+</h1>
-                  <p>Crypto Tracked</p>
+                  <p style = {{fontWeight: 700, "color": "#9884fb", fontSize: "20px"}}>Crypto Tracked</p>
                 </div>
                 <div class="col-lg-4">
                   <h1>21,000+</h1>
-                  <p>Crypto Tracked</p>
+                  <p style = {{fontWeight: 700, "color": "#9884fb", fontSize: "20px"}}>Crypto Tracked</p>
                 </div>
                 <div class="col-lg-4">
                   <h1>21,000+</h1>
-                  <p>Crypto Tracked</p>
+                  <p style = {{fontWeight: 700, "color": "#9884fb", fontSize: "20px"}}>Crypto Tracked</p>
                 </div>
               </div>
+            </div>
+            <div class = "col-lg-6 d-flex align-items-center justify-content-center">
+              <img src = {require('./img/Laptop.webp')} class = "img-fluid" />
             </div>
           </div>
         </div>
       </section>
-      <section>
+      <section style = {{background: "#0d0d0d", "border-top": "0.5px solid #8e7ceb"}}>
         <div class="container">
           <div class="d-flex justify-content-center">
             <div class="d-flex align-items-center p-3">
@@ -392,45 +405,48 @@ function App() {
             </div>
             <div className='d-flex align-items-center'>
               <div>
-                <h1>Subscribe to the Early Bird List!</h1>
-                <p>Be the first in row to access exclusive features & unlock restricted perks.</p>
+                <h1 class = "text-white" style = {{margin: 0}}>Subscribe to the Early Bird List!</h1>
+                <p style = {{"color": "#a89dac", "margin": 0}}>Be the first in row to access exclusive features & unlock restricted perks.</p>
               </div>
             </div>
           </div>
           <div class="d-flex justify-content-center">
             <div>
-              <input type="email" placeholder="Enter Your Email Here" style={{ "width": "100%" }} />
+              <input type="email" placeholder="Enter Your Email Here" style={{ "width": "400px", "padding": "8px 10px" }} />
             </div>
-            <div>
-              <button class="btn btn-primary">Subscribe</button>
+            <div class = "pl-2">
+              <button class="btn btn-danger py-2 px-4">Subscribe</button>
             </div>
           </div>
         </div>
       </section>
-      <section>
+      <section style = {{background: "#25003e"}}>
         <div class="container">
           <div class="row">
-            <div class="col-lg-6">
-              <img src={require('./img/learn-earn.svg')} class="img-fluid" />
+            <div class="col-lg-6 d-flex align-items-center justify-content-center">
+              <img src={LearnImg} class="img-fluid" />
             </div>
-            <div class="col-lg-6">
-              <h1>Learn & Earn Crypto</h1>
-              <p>Get rewarded with free crypto simply for learning about promising crypto projects</p>
-              <ul>
-                <li>Watch short courses</li>
-                <li>Watch short courses</li>
-                <li>Watch short courses</li>
+            <div class="col-lg-6 d-flex align-items-center justify-content-center">
+              <div>
+              <h1 style = {{color: "#e83f82", fontSize: "30px", fontWeight: 700}}>LEARN & EARN CRYPTO</h1>
+              <p style = {{width: "80%"}} className='text-white'>Get rewarded with free crypto simply for learning about promising crypto projects</p>
+              <ul style = {{listStyleType: "none"}}>
+                <li style = {{marginLeft: "-40px", marginTop: "20px", fontSize: "20px", color: "#fff"}}><span style = {{fontWeight: 700}}>&#10003;</span> Watch short courses</li>
+                <li style = {{marginLeft: "-40px", marginTop: "20px", fontSize: "20px", color: "#fff"}}><span style = {{fontWeight: 700}}>&#10003;</span> Watch short courses</li>
+                <li style = {{marginLeft: "-40px", marginTop: "20px", fontSize: "20px", color: "#fff"}}><span style = {{fontWeight: 700}}>&#10003;</span> Watch short courses</li>
               </ul>
+              <button class = "achieve-btn mt-4">Enter the Learnoverse</button>
+              </div>
             </div>
           </div>
         </div>
       </section>
-      <footer class="bg-dark">
+      <footer style = {{"padding": "30px 0 0 0"}}>
         <div class="container">
           <div class="footer-wrapper">
             <div class="row">
               <div class="col-lg-5">
-                <img src="./img/logo 1.png" class="img-fluid" alt="" />
+                <img src={Logo} style = {{width: "200px"}} alt="" />
                 <div class="footer-desc pt-3">
                   <p>BlackFort group of companies DO NOT PROVIDE ANY financial services,
                     investment advice or any type of investment services.</p>

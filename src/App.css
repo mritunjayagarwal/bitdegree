@@ -1,5 +1,5 @@
 section{
-    padding: 50px 0 50px 0;
+    padding: 80px 0 50px 0;
 }
 
 .container{
@@ -84,4 +84,60 @@ table{
 .stat-head{
     color: white;
     font-size: 18px;
+}
+.achieve-head{
+    font-size: 60px !important;
+}
+
+.achieve-para{
+    font-size: 25px;
+}
+
+.achieve-btn{
+    font-size: 20px;
+    padding: 0.6em 2em;
+    border: none;
+    background: #814cff;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
+}
+
+footer {
+    background: #000;
+}
+
+.footer-wrapper {
+    padding: 50px 0;
+}
+
+.footer-desc {
+    color: rgba(255, 255, 255, 0.83);
+    font-size: 14px;
+}
+
+.footer-list-head {
+    color: #fff;
+    font-size: 14px;
+}
+
+.footer-list {
+    list-style-type: none;
+}
+
+.footer-list li {
+    margin: 20px 0;
+}
+
+.footer-list li a{
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 14px;
+    text-decoration: none;
+    margin-left: -40px;
+}
+
+.footer-bottom {
+    background: #19202a;
+    padding: 10px 0;
+    color: rgba(255, 255, 255, 0.83);
 }
