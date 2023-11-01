@@ -1,38 +1,87 @@
-.App {
-  text-align: center;
+section{
+    padding: 50px 0 50px 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container{
+    max-width: 95%;
+    margin: 0 auto !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar{
+    background: #39015d;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.nav-item a{
+    color: #fff;
+    font-weight: 300;
 }
 
-.App-link {
-  color: #61dafb;
+table{
+    background: #2b004a !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.swiper {
+    width: 100%;
+}
+
+.swiper {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*Youtube Section */
+
+.youtube{
+    background: #25003e;
+}
+
+.courseImg{
+    border-radius: 10px;
+}
+
+.course-item-para{
+    margin: 10px 0 0 0;
+    color: #d3d3d3;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.top-courses{
+    background: #2b004a;
+}
+
+.top-course-item{
+    background: #39015d;
+    padding: 0.5em;
+}
+
+.tc-head{
+    font-size: 10px;
+}
+
+.tc-para{
+    font-size: 13px;
+}
+
+.crypto-trade{
+    background:#2b004a;
+}
+
+.ct-head{
+    font-size: 30px;
+}
+
+.ct-para{
+    color: #d3d3d3;
+}
+
+.stat-item{
+    background:#39015d;
+    padding: 1em 1em 0 1em;
+    border-radius: 10px;
+}
+
+.stat-head{
+    color: white;
+    font-size: 18px;
 }
