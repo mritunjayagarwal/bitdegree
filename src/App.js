@@ -6,7 +6,8 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import Navbar from './components/Navbar';
-import Logo from './img/logo.svg'
+import Logo from './img/logo.svg';
+import data from './components/data/data'
 
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
@@ -22,7 +23,11 @@ function App() {
       const res = await axios.get(
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=40&page=1&sparkline=false`
       );
-      setCoins(res.data);
+      if(res.status.error_code  == 429){
+        setCoins(data)
+      }else{
+        setCoins(res.data);
+      }
       console.log(res.data);
     } catch (error) {
       console.error(error);
