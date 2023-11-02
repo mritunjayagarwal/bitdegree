@@ -49,11 +49,11 @@ function App() {
 
       },
       380: {
-        items: 2,
+        items: 1.3,
         margin: 15,
       },
       600: {
-        items: 3
+        items: 1.3
       },
       1000: {
         items: 5
@@ -74,11 +74,11 @@ function App() {
 
       },
       380: {
-        items: 2,
+        items: 1.3,
         margin: 15,
       },
       600: {
-        items: 3
+        items: 1.3
       },
       1000: {
         items: 5
@@ -230,7 +230,7 @@ function App() {
           <p class="ct-para">Today's cryptocurrency global market capitalization is $1.31T, which increased by 0.12% in the last 24 hours. Learn More</p>
           <div class="row mb-3">
             <div class="col-lg-4">
-              <div class = "stat-item">
+              <div class = "stat-item mb-4">
                   <h3 class = "stat-head">Activity Center</h3>
                   <OwlCarousel className='owl-theme text-white' loop margin={10} {...options3}>
                 <div className='top-course-item' style = {{"padding-left": 0}}>
@@ -263,7 +263,7 @@ function App() {
               </div>
             </div>
             <div class="col-lg-4">
-              <div class = "stat-item">
+              <div class = "stat-item mb-4">
                   <h3 class = "stat-head">Activity Center</h3>
                   <OwlCarousel className='owl-theme text-white' loop margin={10} {...options3}>
                 <div className='top-course-item' style = {{"padding-left": 0}}>
@@ -296,7 +296,7 @@ function App() {
               </div>
             </div>
             <div class="col-lg-4">
-              <div class = "stat-item">
+              <div class = "stat-item mb-4">
                   <h3 class = "stat-head">Activity Center</h3>
                   <OwlCarousel className='owl-theme text-white' loop margin={10} {...options3}>
                 <div className='top-course-item' style = {{"padding-left": 0}}>
@@ -327,19 +327,13 @@ function App() {
                 </div>
               </OwlCarousel>;
               </div>
-            </div>
-          </div>
-          <div class = "d-flex">
-            <div>
-                {/* <button class = "filter-btn">All Assets</button> */}
-                {/* <button class = "filter-btn" onClick = {() => setTop(true)}>Gainers</button>
-                <button class = "filter-btn" onClick = {() => setTop(false)}>Losers</button> */}
             </div>
           </div>
           <table className="table table-hover" style={{ "position": "relative" }}>
             <thead className='sticky-top text-white' style = {{"background": "#2b004a"}}>
               <tr>
                 <th scope="col">#</th>
+                <th scope="col">Symbol</th>
                 <th scope="col">Name</th>
                 <th scope="col">Price</th>
                 <th scope="col">20H %</th>
@@ -355,9 +349,10 @@ function App() {
                 return (
                   <tr>
                     <th scope="row" class = "py-4">{index + 1}</th>
-                    <td class = "py-4"><img src={image} style={{ "width": "30px", "margin-right": "5px" }} /> {name}</td>
+                    <td class = "py-4"><img src={image} style={{ "width": "30px", "margin-right": "5px" }} /></td>
+                    <td class = "py-4">{name}</td>
                     <td class = "py-4">${current_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
-                    {price_change_percentage_24h > 0 ? <td class = "py-4" style = {{"color": "#19c283", "font-weight": 800}}>{"+" + price_change_percentage_24h.toFixed(2)}</td>: <td class = "py-4" style = {{"color": "#ff3d64", "font-weight": 800}}>{price_change_percentage_24h.toFixed(2)}</td>}
+                    {price_change_percentage_24h > 0 ? <td class = "py-4" style = {{"color": "#19c283", "font-weight": 800}}>{"+" + price_change_percentage_24h.toFixed(2) + "%"}</td>: <td class = "py-4" style = {{"color": "#ff3d64", "font-weight": 800}}>{price_change_percentage_24h.toFixed(2) + "%"}</td>}
                     <td class = "py-4">{market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
                     <td class = "py-4">{total_volume.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
                     <td class = "py-4">{circulating_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
@@ -379,20 +374,20 @@ function App() {
         <div class="container">
           <div class="row">
             <div class="col-lg-6">
-              <h1 class = "text-white">We are educating millions of cryptocurrency learners with 21,000+ crypto courses, blockchain projects, coins, and tokens</h1>
-              <p style = {{"color": "#9f9e9e", fontSize: "25px", fontWeight: 300}}>As the leading gamified learning crypto education platform in the world, we focus on providing you with tracking information and in-depth data on the largest number of different digital assets, cryptocurrency prices, and other metrics. With the help of our Cryptocurrency Tracker, you can learn and earn crypto by tracking and analyzing the data of over 21,000+ different crypto projects, as well as the coins & tokens behind them.</p>
+              <h1 class = "achieve-head text-white">We are educating millions of cryptocurrency learners with 21,000+ crypto courses, blockchain projects, coins, and tokens</h1>
+              <p class = "achieve-para" style = {{"color": "#9f9e9e", fontSize: "20px", fontWeight: 300}}>As the leading gamified learning crypto education platform in the world, we focus on providing you with tracking information and in-depth data on the largest number of different digital assets, cryptocurrency prices, and other metrics. With the help of our Cryptocurrency Tracker, you can learn and earn crypto by tracking and analyzing the data of over 21,000+ different crypto projects, as well as the coins & tokens behind them.</p>
               <div class="row text-white">
-                <div class="col-lg-4">
-                  <h1>21,000+</h1>
-                  <p style = {{fontWeight: 700, "color": "#9884fb", fontSize: "20px"}}>Crypto Tracked</p>
+                <div class="col-lg-4 col-4">
+                  <h1 class = "stat-data">21,000+</h1>
+                  <p class = "stat-name">Crypto Tracked</p>
                 </div>
-                <div class="col-lg-4">
-                  <h1>21,000+</h1>
-                  <p style = {{fontWeight: 700, "color": "#9884fb", fontSize: "20px"}}>Crypto Tracked</p>
+                <div class="col-lg-4 col-4">
+                  <h1 class = "stat-data">21,000+</h1>
+                  <p class = "stat-name">Crypto Tracked</p>
                 </div>
-                <div class="col-lg-4">
-                  <h1>21,000+</h1>
-                  <p style = {{fontWeight: 700, "color": "#9884fb", fontSize: "20px"}}>Crypto Tracked</p>
+                <div class="col-lg-4 col-4">
+                  <h1 class = "stat-data">21,000+</h1>
+                  <p class = "stat-name">Crypto Tracked</p>
                 </div>
               </div>
             </div>
@@ -405,7 +400,7 @@ function App() {
       <section style = {{background: "#0d0d0d", "border-top": "0.5px solid #8e7ceb"}}>
         <div class="container">
           <div class="d-flex justify-content-center">
-            <div class="d-flex align-items-center p-3">
+            <div class="d-flex align-items-center p-3 subscribe-img">
               <img src={require('./img/subscribe.webp')} class="img-fluid" />
             </div>
             <div className='d-flex align-items-center'>
@@ -415,9 +410,9 @@ function App() {
               </div>
             </div>
           </div>
-          <div class="d-flex justify-content-center">
+          <div class="d-flex justify-content-center mt-3">
             <div>
-              <input type="email" placeholder="Enter Your Email Here" style={{ "width": "400px", "padding": "8px 10px" }} />
+              <input type="email" placeholder="Enter Your Email Here" class = "subscribe-input" />
             </div>
             <div class = "pl-2">
               <button class="btn btn-danger py-2 px-4">Subscribe</button>
@@ -467,7 +462,7 @@ function App() {
               </div>
               <div class="col-lg-7">
                 <div class="row">
-                  <div class="col-lg-4">
+                  <div class="col-lg-4 col-6">
                     <h5 class="footer-list-head">Links</h5>
 
                     <ul class="footer-list">
@@ -477,7 +472,7 @@ function App() {
                       <li><a href='/fees'>Fees</a></li>
                     </ul>
                   </div>
-                  <div class="col-lg-4">
+                  <div class="col-lg-4 col-6">
                     <h5 class="footer-list-head">Company</h5>
 
                     <ul class="footer-list">
@@ -486,7 +481,7 @@ function App() {
                       <li><a href='/kyc'>KML & KYC Policy</a></li>
                     </ul>
                   </div>
-                  <div class="col-lg-4">
+                  <div class="col-lg-4 col-6">
                     <h5 class="footer-list-head">Learn & Support</h5>
 
                     <ul class="footer-list">
