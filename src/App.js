@@ -42,6 +42,8 @@ function App() {
     loop: false,
     margin: 30,
     dots: false,
+    autoplay: true,
+		autoplayTimeout: 2000,
     autoplayHoverPause: true,
     responsive: {
       0: {
@@ -67,6 +69,8 @@ function App() {
     loop: false,
     margin: 30,
     dots: false,
+    autoplay: true,
+		autoplayTimeout: 2000,
     autoplayHoverPause: true,
     responsive: {
       0: {
@@ -92,6 +96,8 @@ function App() {
   const options3 = {
     loop: false,
     margin: 30,
+    autoplay: true,
+		autoplayTimeout: 2000,
     responsive: {
       0: {
         items: 1,
